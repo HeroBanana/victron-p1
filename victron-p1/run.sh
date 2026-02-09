@@ -9,9 +9,4 @@ export POLL_INTERVAL
 export MODBUS_PORT=502
 export DEBUG=false
 
-echo "Starting HomeWizard P1 to Victron bridge..."
-echo "  HomeWizard IP: $HOMEWIZARD_IP"
-echo "  Poll interval: ${POLL_INTERVAL}ms"
-echo "  Modbus TCP port: 502"
-
 exec node /app/index.js

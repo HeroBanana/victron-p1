@@ -19,6 +19,7 @@ schema:
   homewizard_ip: str
   poll_interval: int
 init: false
+watchdog: false
 startup: "application"
 boot: "auto"
 host_network: true
