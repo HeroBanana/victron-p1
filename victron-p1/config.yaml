@@ -1,6 +1,6 @@
 name: "HomeWizard P1 to Victron"
 description: "Bridges HomeWizard P1 meter to Victron Venus OS by emulating a Carlo Gavazzi EM24 grid meter via Modbus TCP"
-version: "1.0.3"
+version: "1.0.4"
 slug: "victron-p1"
 arch:
   - amd64
@@ -15,9 +15,11 @@ ports_description:
 options:
   homewizard_ip: "192.168.1.188"
   poll_interval: 1000
+  modbus_port: 502
 schema:
   homewizard_ip: str
   poll_interval: int
+  modbus_port: port
 init: false
 startup: "application"
 boot: "auto"
