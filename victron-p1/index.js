@@ -162,16 +162,36 @@ console.log(`  HomeWizard IP: ${CONFIG.homewizard.ip}`);
 console.log(`  Modbus TCP port: ${CONFIG.modbus.port}`);
 console.log(`  Poll interval: ${CONFIG.homewizard.pollInterval}ms`);
 
-const server = new ModbusRTU.ServerTCP(vector, {
-    host: '0.0.0.0',
-    port: CONFIG.modbus.port,
-    debug: false,
-    unitID: 1,
-});
+let server;
+try {
+    server = new ModbusRTU.ServerTCP(vector, {
+        host: '0.0.0.0',
+        port: CONFIG.modbus.port,
+        debug: false,
+        unitID: 1,
+    });
+} catch (err) {
+    console.error('Failed to create Modbus server:', err.message);
+    process.exit(1);
+}
 
 server.on('socketError', (err) => {
     console.error('Modbus TCP error:', err.message);
 });
+
+server.on('error', (err) => {
+    console.error('Modbus server error:', err.message);
+});
+
+// Catch errors on the underlying net.Server
+if (server._server) {
+    server._server.on('error', (err) => {
+        console.error('TCP server error:', err.message);
+        if (err.code === 'EADDRINUSE') {
+            console.error(`Port ${CONFIG.modbus.port} is already in use!`);
+        }
+    });
+}
 
 server.on('initialized', () => {
     console.log(`Modbus TCP server listening on port ${CONFIG.modbus.port}`);
@@ -199,3 +219,4 @@ process.on('SIGTERM', shutdown);
 process.on('SIGINT', shutdown);
 process.on('uncaughtException', (err) => { console.error('Uncaught:', err); shutdown(); });
 process.on('unhandledRejection', (err) => { console.error('Unhandled:', err); shutdown(); });
+process.on('exit', (code) => { console.log(`Process exiting with code ${code}`); });

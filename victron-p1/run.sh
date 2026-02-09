@@ -7,6 +7,6 @@ POLL_INTERVAL=$(jq -r '.poll_interval' $CONFIG_PATH)
 export HOMEWIZARD_IP
 export POLL_INTERVAL
 export MODBUS_PORT=502
-export DEBUG=false
+export DEBUG=true
 
 exec node /app/index.js
