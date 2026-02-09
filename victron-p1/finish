@@ -1,0 +1,5 @@
+#!/usr/bin/execlineb -S1
+# If exit code is non-zero (crash), s6 will auto-restart.
+# If exit code is 0 (clean shutdown / SIGTERM), mark service as down.
+if { s6-test ${1} -eq 0 }
+s6-svc -O /var/run/s6/services/victron-p1

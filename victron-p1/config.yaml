@@ -1,6 +1,6 @@
 name: "HomeWizard P1 to Victron"
 description: "Bridges HomeWizard P1 meter to Victron Venus OS by emulating a Carlo Gavazzi EM24 grid meter via Modbus TCP"
-version: "1.0.0"
+version: "1.0.1"
 slug: "victron-p1"
 arch:
   - amd64
