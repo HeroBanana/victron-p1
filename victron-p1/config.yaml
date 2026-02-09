@@ -18,6 +18,7 @@ options:
 schema:
   homewizard_ip: str
   poll_interval: int
+init: false
 startup: "application"
 boot: "auto"
 host_network: true
