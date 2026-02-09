@@ -25,10 +25,18 @@ Home Assistant add-on that bridges a HomeWizard P1 energy meter to Victron Venus
 
 ```bash
 git clone https://github.com/HeroBanana/victron-p1.git
-cd victron-p1
+cd victron-p1/victron-p1
 npm install
-cp .env.example .env  # edit with your HomeWizard IP
-sudo node index.js    # port 502 requires root
+```
+
+```bash
+sudo HOMEWIZARD_IP=192.168.1.188 POLL_INTERVAL=1000 MODBUS_PORT=502 node index.js
+```
+
+Or with a `.env` file (Node.js 20+):
+
+```bash
+sudo node --env-file=.env index.js
 ```
 
 ## Venus OS setup
