@@ -1,0 +1,23 @@
+name: "HomeWizard P1 to Victron"
+description: "Bridges HomeWizard P1 meter to Victron Venus OS by emulating a Carlo Gavazzi EM24 grid meter via Modbus TCP"
+version: "1.0.0"
+slug: "victron-p1"
+arch:
+  - amd64
+  - aarch64
+  - armv7
+  - armhf
+  - i386
+ports:
+  502/tcp: 502
+ports_description:
+  502/tcp: "Modbus TCP (Venus OS connects here)"
+options:
+  homewizard_ip: "192.168.1.188"
+  poll_interval: 1000
+schema:
+  homewizard_ip: str
+  poll_interval: int
+startup: "application"
+boot: "auto"
+host_network: true

@@ -1,0 +1,10 @@
+{
+  "name": "victron-p1",
+  "version": "1.0.0",
+  "description": "HomeWizard P1 to Victron Energy bridge (Modbus TCP EM24 emulation)",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^1.7.0",
+    "modbus-serial": "^8.0.0"
+  }
+}
