@@ -8,7 +8,6 @@
 
 const ModbusRTU = require('modbus-serial');
 const axios = require('axios');
-require('dotenv').config();
 
 // ============================================
 // CONFIGURATION
