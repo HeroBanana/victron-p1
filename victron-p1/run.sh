@@ -9,5 +9,4 @@ export POLL_INTERVAL
 export MODBUS_PORT=502
 export DEBUG=false
 
-sleep 2
 exec node /app/index.js
