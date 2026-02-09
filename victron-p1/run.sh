@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashrc
+#!/bin/bash
 
 CONFIG_PATH=/data/options.json
 HOMEWIZARD_IP=$(jq -r '.homewizard_ip' $CONFIG_PATH)
