@@ -7,7 +7,5 @@ WORKDIR /app
 COPY package.json .
 RUN npm install --production
 COPY index.js .
-COPY run.sh /
-RUN chmod +x /run.sh
-
-CMD ["/run.sh"]
+COPY run.sh /etc/services.d/victron-p1/run
+RUN chmod +x /etc/services.d/victron-p1/run
